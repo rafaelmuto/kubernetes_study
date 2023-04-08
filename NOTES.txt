@@ -1,0 +1,40 @@
+>>> KIND crete cluster:
+kind create cluster --name <cluster-name> --config <path_to_file>
+kind create cluster --name cluster-test --config k8s/kind.yaml
+
+>>> KIND delete cluster:
+kind delete cluster --name <cluster-name>
+kind delete cluster --name cluster-test
+
+>>> KIND list clusters:
+kind get clusters
+
+>>> KIND load image to cluster:
+kind load docker-image <image>:<tag> --name <cluster-name>
+kind load docker-image hello-go:latest --name cluster-test
+
+
+>>> KUBECTL add cluster context:
+kubectl cluster-info --context <cluster-name>
+
+>>> KUBECTL delete pod:
+kubectl delete pod <pod-name>
+
+>>> KUBECTL port forwarding:
+kubectl port-forward pod/goserver 8080:80
+kubectl port-forward replicasets/goserver-replicaset 8080:80  
+
+>>> KUBECTL view pod info:
+kubectl describe pod <pod-name>
+
+>>> KUBECTL rollout history:
+kubectl rollout history <obj-kind> <obj-name>
+
+---
+
+> DOCKER build image
+docker build -t hello-go:latest . 
+
+kubectl apply -f k8s/pod.yaml
+
+ubectl apply -f k8s/replicaset.yaml
