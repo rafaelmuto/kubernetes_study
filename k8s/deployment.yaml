@@ -20,6 +20,12 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: NAME
-              value: "rafaelmuto"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: VALUE1
             - name: AGE
-              value: "36"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: VALUE2
