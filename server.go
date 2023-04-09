@@ -10,7 +10,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", Hello)
-	http.HandleFunc("/configmap", ConfigMap)
+	http.HandleFunc("/lorem", ConfigMap)
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -21,9 +21,9 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func ConfigMap(w http.ResponseWriter, r *http.Request) {
-	data, err := ioutil.ReadFile("files/notes.txt")
+	data, err := ioutil.ReadFile("files/lorem.txt")
 	if err != nil {
 		log.Fatalf("Error reading file: ", err)
 	}
-	fmt.Fprintf(w, "my notes file: %s.", string(data))
+	fmt.Fprintf(w, "lorem.txt:  %s.", string(data))
 }

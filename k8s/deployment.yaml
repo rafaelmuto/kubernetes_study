@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: hello-go:v5
+          image: hello-go:v5.1
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
@@ -31,4 +31,4 @@ spec:
             name: configmap-lorem
             items:
               - key: conteudo
-                path: "notes.txt"
+                path: "lorem.txt"
