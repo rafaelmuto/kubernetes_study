@@ -30,6 +30,14 @@ kubectl describe pod <pod-name>
 >>> KUBECTL rollout history:
 kubectl rollout history <obj-kind> <obj-name>
 
+>>> KUBECTL exec
+kubectl exec -it <pod-name> -- bash
+
+>>> KUBECTL pod logs
+kubectl logs <pod-name>
+
+
+
 ---
 
 > DOCKER build image

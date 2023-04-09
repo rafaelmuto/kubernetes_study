@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 5
+  replicas: 3
   template:
     metadata:
       labels:
@@ -16,16 +16,19 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: hello-go:v3
+          image: hello-go:v5
           imagePullPolicy: IfNotPresent
-          env:
-            - name: NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: goserver-env
-                  key: VALUE1
-            - name: AGE
-              valueFrom:
-                configMapKeyRef:
-                  name: goserver-env
-                  key: VALUE2
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+          volumeMounts:
+            - mountPath: "/go/files"
+              name: volume-lorem
+              readOnly: true
+      volumes:
+        - name: volume-lorem
+          configMap:
+            name: configmap-lorem
+            items:
+              - key: conteudo
+                path: "notes.txt"
