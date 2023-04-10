@@ -46,3 +46,6 @@ docker build -t hello-go:latest .
 kubectl apply -f k8s/pod.yaml
 
 ubectl apply -f k8s/replicaset.yaml
+
+
+ kubectl apply -f k8s/deployment.yaml && watch -n1 kubectl get pods
